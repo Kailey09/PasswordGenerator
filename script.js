@@ -2,6 +2,7 @@
 const length = ""
 const randomLower = "abcdefghijklmnopqrstuvwxyz"
 const randomUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+//                   012 ..                   25
 const symbols = " !@#$%^&*()"
 const numbers = "1234567890"
 
@@ -9,34 +10,30 @@ const numbers = "1234567890"
 // Assignment code here
 var generatePassword = function() {
  
-const length = window.prompt("Pick a number between 8-128 to determine password length.");
-console.log(length);
+var length = window.prompt("Pick a number between 8-128 to determine password length.");
+var result = "";
 
-const randomLower = window.prompt("Would you like to add a lowercase letter? Enter YES or NO.");
-if (randomLower === "YES" || randomLower === "yes") {
-  console.log (String.fromCharCode(Math.floor(Math.random() * 26) + 97));
+for(i = 0; i < length; i++){
+
+  var randomIndex = Math.floor(Math.random() * 26);
+  var randomChar = randomUpper[randomIndex];
+
+  result = result + randomChar;
 }
 
-const randomUpper = window.prompt("Would you like to add a lowercase letter? Enter YES or NO");
-if (randomUpper === "YES" || randomUpper === "yes") {
-  console.log(String.fromCharCode(Math.floor(Math.random()* 26) + 65));
-}
+var includesLowercase = window.confirm("Would you like to add a lowercase letter? Enter YES or NO.");
 
-const symbols = window.prompt("Would you like to add a sybmol in your password? Enter YES or NO");
-if (symbols === "YES" || symbols === "yes") {
-  console.log (symbols(Math.floor(Math.random() * symbols.length)));
-}
+var includesUppercase = window.confirm("Would you like to add a lowercase letter? Enter YES or NO");
 
-const numbers = window.prompt("Would you like to add a number in your password? Enter YES or NO");
-if (numbers === "YES" || numbers === "yes") {
-  console.log (String.fromCharCode(Math.floor(Math.random() * 10) + 48));
-}
+var includesSymbols = window.confirm("Would you like to add a sybmol in your password? Enter YES or NO");
 
-  
+var includesNumbers = window.confirm("Would you like to add a number in your password? Enter YES or NO");
 
 
+
+return result;
 };
-generatePassword();
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
